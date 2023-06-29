@@ -1,0 +1,1 @@
+ALTER TABLE public.pessoa ADD COLUMN ativo boolean DEFAULT false;
