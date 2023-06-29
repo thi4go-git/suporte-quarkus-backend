@@ -7,8 +7,8 @@ services:
             context: .
             dockerfile: src/main/docker/Dockerfile.jvm
             args:
-                - JAR_FILE=target/suporte-quarkus-1.0.jar
-                - CONTEXT=suporte-quarkus
+                - JAR_FILE=target/suporte-quarkus-backend-1.0.jar
+                - CONTEXT=suporte-quarkus-backend
         ports:
             - 8088:8080
         environment:

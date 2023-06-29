@@ -14,11 +14,6 @@ pipeline {
                  sh './mvnw clean package -DskipTests=true'
              }
       }
-      stage('teste docker') {
-           steps {
-               sh 'docker ps'
-           }
-      }
       stage('Testes unitarios'){
           steps {
               sh './mvnw verify'
