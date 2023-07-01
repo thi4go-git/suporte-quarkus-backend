@@ -1,14 +1,11 @@
 package com.dynns.cloudtecnologia.rest.controller;
 
 
-import com.dynns.cloudtecnologia.rest.client.ViaCepClient;
 import com.dynns.cloudtecnologia.rest.dto.PessoaDTONew;
 import com.dynns.cloudtecnologia.rest.dto.PessoaDTOUpdate;
 import com.dynns.cloudtecnologia.rest.mapper.PessoaMapper;
-import com.dynns.cloudtecnologia.service.impl.PessoaServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.quarkus.test.Mock;
 import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import org.apache.http.HttpStatus;
@@ -51,6 +48,7 @@ class PessoaControllerTest {
     private static final Long ID_EXISTENTE = 1L;
     private static final Long ID_INEXISTENTE = 999999L;
     private static final String NOME_UPDATE = "TESTE UPDATE";
+    private static final String TAG_ERRORS = "errors";
 
 
     @Test
@@ -70,7 +68,7 @@ class PessoaControllerTest {
                 .response();
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody  => " + responseBody);
+        LOG.info(responseBody);
 
         assertNotNull(responseBody);
         assertEquals(HttpStatus.SC_CREATED, resposta.statusCode());
@@ -104,10 +102,10 @@ class PessoaControllerTest {
                 .response();
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody => " + responseBody);
+        LOG.info(responseBody);
 
         String mensagemEsperada = "[CPF Inválido!]";
-        String mensagemRetorno = resposta.jsonPath().getString("errors").toString();
+        String mensagemRetorno = resposta.jsonPath().getString(TAG_ERRORS).toString();
 
 
         assertEquals(HttpStatus.SC_BAD_REQUEST, resposta.statusCode());
@@ -130,7 +128,7 @@ class PessoaControllerTest {
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody => " + responseBody);
+        LOG.info(responseBody);
 
         assertNotNull(responseBody);
         assertEquals(HttpStatus.SC_OK, resposta.statusCode());
@@ -151,7 +149,7 @@ class PessoaControllerTest {
                 .response();
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody => " + responseBody);
+        LOG.info(responseBody);
 
         assertEquals(HttpStatus.SC_OK, resposta.statusCode());
         assertNotNull(responseBody);
@@ -175,10 +173,10 @@ class PessoaControllerTest {
                 .response();
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody => " + responseBody);
+        LOG.info(responseBody);
 
         String mensagemEsperada = "[Entidade: 'Pessoa', cpf '" + CPF_INEXISTENTE + "' Não localizada! ]";
-        String mensagemRetorno = resposta.jsonPath().getString("errors").toString();
+        String mensagemRetorno = resposta.jsonPath().getString(TAG_ERRORS).toString();
 
         assertEquals(HttpStatus.SC_NOT_FOUND, resposta.statusCode());
         assertEquals(mensagemEsperada, mensagemRetorno);
@@ -207,7 +205,7 @@ class PessoaControllerTest {
 
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody => " + responseBody);
+        LOG.info(responseBody);
 
         assertNotNull(responseBody);
         assertEquals(HttpStatus.SC_OK, resposta.statusCode());
@@ -244,10 +242,10 @@ class PessoaControllerTest {
                 .response();
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody => " + responseBody);
+        LOG.info(responseBody);
 
         String mensagemEsperada = "[Entidade: 'Pessoa', id '" + ID_INEXISTENTE + "' Não localizada! ]";
-        String mensagemRetorno = resposta.jsonPath().getString("errors").toString();
+        String mensagemRetorno = resposta.jsonPath().getString(TAG_ERRORS).toString();
 
         assertEquals(HttpStatus.SC_NOT_FOUND, resposta.statusCode());
         assertEquals(mensagemEsperada, mensagemRetorno);
@@ -268,7 +266,27 @@ class PessoaControllerTest {
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody => " + responseBody);
+        LOG.info(responseBody);
+
+        assertNotNull(responseBody);
+        assertEquals(HttpStatus.SC_OK, resposta.statusCode());
+    }
+
+    @Test
+    @DisplayName("Deve Buscar Endereco Por Cpf")
+    @Order(9)
+    void buscarEnderecoPorCpf() {
+
+        var resposta = given()
+                .contentType(MediaType.APPLICATION_JSON)
+                .when()
+                .get("/"+CPF_EXISTENTE+"/endereco")
+                .then()
+                .extract()
+                .response();
+
+        String responseBody = resposta.getBody().asString();
+        LOG.info(responseBody);
 
         assertNotNull(responseBody);
         assertEquals(HttpStatus.SC_OK, resposta.statusCode());
@@ -276,7 +294,7 @@ class PessoaControllerTest {
 
     @Test
     @DisplayName("Deve deletar Pessoa pelo ID")
-    @Order(11)
+    @Order(10)
     void deletarPessoaPorIdSucesso() {
 
         var resposta = given()
@@ -288,13 +306,16 @@ class PessoaControllerTest {
                 .extract()
                 .response();
 
+        String responseBody = resposta.getBody().asString();
+        LOG.info(responseBody);
+
         assertEquals(HttpStatus.SC_NO_CONTENT, resposta.statusCode());
 
     }
 
     @Test
     @DisplayName("Deve Lançar EntidadeNaoEncontradaExceptionMapper ao deletar Pessoa pelo ID inexistente")
-    @Order(12)
+    @Order(11)
     void deletarPessoaPorIdErro() {
 
         var resposta = given()
@@ -307,10 +328,10 @@ class PessoaControllerTest {
                 .response();
 
         String responseBody = resposta.getBody().asString();
-        LOG.info("responseBody => " + responseBody);
+        LOG.info(responseBody);
 
         String mensagemEsperada = "[Entidade: 'Pessoa', id '" + ID_INEXISTENTE + "' Não localizada! ]";
-        String mensagemRetorno = resposta.jsonPath().getString("errors").toString();
+        String mensagemRetorno = resposta.jsonPath().getString(TAG_ERRORS).toString();
 
         assertEquals(HttpStatus.SC_NOT_FOUND, resposta.statusCode());
         assertEquals(mensagemEsperada, mensagemRetorno);

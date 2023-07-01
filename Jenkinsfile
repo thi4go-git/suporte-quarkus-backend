@@ -8,11 +8,6 @@ pipeline {
    }
 
    stages {
-      stage('teste docker') {
-           steps {
-                sh 'docker ps'
-           }
-      }
       stage('Compilando') {
             steps {
                  sh 'chmod 777 ./mvnw'
@@ -30,7 +25,7 @@ pipeline {
            }
            steps {
                withSonarQubeEnv('SONAR'){
-                   sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=suporte-quarkus-backend -Dsonar.host.url=http://cloudtecnologia.dynns.com:9000 -Dsonar.login=85d3a813a3df2250d726cbe7a28d5902e0dc6b66 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/entity/**,**/dto/**,**/enums/**,MavenWrapperDownloader.java"
+                   sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=suporte-quarkus-backend -Dsonar.host.url=http://cloudtecnologia.dynns.com:9000 -Dsonar.login=85d3a813a3df2250d726cbe7a28d5902e0dc6b66 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/entity/**,**/dto/**,**/enums/**,MavenWrapperDownloader.java,index.html"
                }
            }
       }
@@ -48,9 +43,10 @@ pipeline {
                 sh 'docker-compose up -d'
            }
       }
-      stage('Conferindo container'){
+      stage('Limpando Cache'){
            steps {
-                sleep(5)
+                sleep(10)s
+                sh 'docker system prune -f'
                 sh 'docker ps'
            }
       }
