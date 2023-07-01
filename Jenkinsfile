@@ -48,10 +48,10 @@ pipeline {
                 sh 'docker-compose up -d'
            }
       }
-      stage('Clean cache'){
+      stage('Conferindo container'){
            steps {
                 sleep(5)
-                sh 'docker system prune -f'
+                sh 'docker ps'
            }
       }
    }
