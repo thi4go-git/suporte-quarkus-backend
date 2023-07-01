@@ -202,7 +202,7 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <configuration>
                     <excludes>
-                        <exclude>**/.mvn/**,**/src/test/**,**/entity/**,**/dto/**,**/enums/**,MavenWrapperDownloader.java</exclude>
+                        <exclude>**/.mvn/**,**/src/test/**,**/entity/**,**/rest/dto/**,**/enums/**,MavenWrapperDownloader.java,PessoaRepository.java</exclude>
                     </excludes>
                 </configuration>
                 <executions>
