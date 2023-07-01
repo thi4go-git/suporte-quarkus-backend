@@ -10,7 +10,7 @@ pipeline {
    stages {
       stage('teste docker') {
            steps {
-                sh 'sudo docker ps'
+                sh 'echo 89567491351002 | sudo -S docker ps'
            }
       }
       stage('Compilando') {
