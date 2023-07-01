@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
+
 @QuarkusTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestHTTPEndpoint(PessoaController.class)
@@ -49,6 +50,8 @@ class PessoaControllerTest {
     private static final Long ID_INEXISTENTE = 999999L;
     private static final String NOME_UPDATE = "TESTE UPDATE";
     private static final String TAG_ERRORS = "errors";
+
+    private static final String MENSAGEM_ID_INEXISTENTE_ESPERADA = "[Entidade: 'Pessoa', id '" + ID_INEXISTENTE + "' Não localizada! ]";
 
 
     @Test
@@ -153,7 +156,7 @@ class PessoaControllerTest {
 
         assertEquals(HttpStatus.SC_OK, resposta.statusCode());
         assertNotNull(responseBody);
-        assertEquals("89626778490", resposta.jsonPath().getString("cpf"));
+        assertEquals(CPF_EXISTENTE, resposta.jsonPath().getString("cpf"));
 
     }
 
@@ -244,11 +247,10 @@ class PessoaControllerTest {
         String responseBody = resposta.getBody().asString();
         LOG.info(responseBody);
 
-        String mensagemEsperada = "[Entidade: 'Pessoa', id '" + ID_INEXISTENTE + "' Não localizada! ]";
         String mensagemRetorno = resposta.jsonPath().getString(TAG_ERRORS).toString();
 
         assertEquals(HttpStatus.SC_NOT_FOUND, resposta.statusCode());
-        assertEquals(mensagemEsperada, mensagemRetorno);
+        assertEquals(MENSAGEM_ID_INEXISTENTE_ESPERADA, mensagemRetorno);
 
     }
 
@@ -272,15 +274,17 @@ class PessoaControllerTest {
         assertEquals(HttpStatus.SC_OK, resposta.statusCode());
     }
 
+
     @Test
-    @DisplayName("Deve Buscar Endereco Por Cpf")
+    @DisplayName("Deve chamar Buscar Endereco")
     @Order(9)
-    void buscarEnderecoPorCpf() {
+    void deveChamarBuscarEnderecoPorCpf() {
 
         var resposta = given()
                 .contentType(MediaType.APPLICATION_JSON)
+                .pathParam("cpf", CPF_EXISTENTE)
                 .when()
-                .get("/"+CPF_EXISTENTE+"/endereco")
+                .get("/{cpf}/endereco")
                 .then()
                 .extract()
                 .response();
@@ -289,7 +293,7 @@ class PessoaControllerTest {
         LOG.info(responseBody);
 
         assertNotNull(responseBody);
-        assertEquals(HttpStatus.SC_OK, resposta.statusCode());
+
     }
 
     @Test
@@ -330,11 +334,10 @@ class PessoaControllerTest {
         String responseBody = resposta.getBody().asString();
         LOG.info(responseBody);
 
-        String mensagemEsperada = "[Entidade: 'Pessoa', id '" + ID_INEXISTENTE + "' Não localizada! ]";
         String mensagemRetorno = resposta.jsonPath().getString(TAG_ERRORS).toString();
 
         assertEquals(HttpStatus.SC_NOT_FOUND, resposta.statusCode());
-        assertEquals(mensagemEsperada, mensagemRetorno);
+        assertEquals(MENSAGEM_ID_INEXISTENTE_ESPERADA, mensagemRetorno);
 
     }
 

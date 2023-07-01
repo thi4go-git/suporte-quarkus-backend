@@ -14,7 +14,7 @@ public interface ViaCepClient {
 
     @GET
     @Path("/{cep}/json")
-    public EnderecoDTO getEnderecoByCep(@PathParam("cep") String cep);
+    EnderecoDTO getEnderecoByCep(@PathParam("cep") String cep);
 
 
 }
