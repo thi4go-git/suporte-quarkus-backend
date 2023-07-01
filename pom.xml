@@ -18,6 +18,18 @@
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
         <jacoco.version>0.8.7</jacoco.version>
+        <sonar.coverage.exclusions>
+            **/model/**, **/dto/**, **/entity/**,
+            **/enum/**, **/enums/**,
+            **/anottation/**, **/enums/**,
+            **/repository/**
+        </sonar.coverage.exclusions>
+        <sonar.exclusions>
+            **/model/**, **/dto/**, **/entity/**,
+            **/enum/**, **/enums/**,
+            **/anottation/**, **/enums/**,
+            **/repository/**
+        </sonar.exclusions>
     </properties>
 
     <dependencyManagement>

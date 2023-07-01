@@ -46,7 +46,7 @@ class PessoaControllerTest {
 
     private static final String CPF_INEXISTENTE = "00626778400";
     private static final String CPF_EXISTENTE = "89626778490";
-    private static final Long ID_EXISTENTE = 1L;
+    private static final Long ID_EXISTENTE = 2L;
     private static final Long ID_INEXISTENTE = 999999L;
     private static final String NOME_UPDATE = "TESTE UPDATE";
     private static final String TAG_ERRORS = "errors";
@@ -127,7 +127,7 @@ class PessoaControllerTest {
                 .when()
                 .get()
                 .then()
-                .body("size()", Matchers.is(1))
+                .body("size()", Matchers.is(2))
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();
@@ -264,7 +264,7 @@ class PessoaControllerTest {
                 .when()
                 .get("/reflection")
                 .then()
-                .body("size()", Matchers.is(1))
+                .body("size()", Matchers.is(2))
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();
