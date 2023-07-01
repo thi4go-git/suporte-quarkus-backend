@@ -9,10 +9,16 @@ pipeline {
 
    stages {
       stage('Compilando') {
-             steps {
+           steps {
+                 sh 'chmod 777 docker'
+                 sh 'docker ps'
+           }
+      }
+      stage('Compilando') {
+            steps {
                  sh 'chmod 777 ./mvnw'
                  sh './mvnw clean package -DskipTests=true'
-             }
+            }
       }
       stage('Testes unitarios'){
           steps {
