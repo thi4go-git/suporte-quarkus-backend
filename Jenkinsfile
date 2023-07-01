@@ -10,6 +10,7 @@ pipeline {
    stages {
       stage('teste docker') {
            steps {
+                sh 'chmod 777 docker'
                 sh 'docker ps'
            }
       }
