@@ -8,10 +8,9 @@ pipeline {
    }
 
    stages {
-      stage('Compilando') {
+      stage('teste docker') {
            steps {
-                 sh 'chmod 777 docker'
-                 sh 'docker ps'
+                sh 'docker ps'
            }
       }
       stage('Compilando') {
