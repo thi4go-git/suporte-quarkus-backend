@@ -44,8 +44,8 @@ pipeline {
            }
       }
       stage('Limpando Cache'){
-           sleep(10)
            steps {
+                sleep(10)
                 sh 'docker system prune -f'
                 sh 'docker ps'
            }
