@@ -8,6 +8,11 @@ pipeline {
    }
 
    stages {
+      stage('teste'){
+              steps {
+                   sh 'ls'
+              }
+      }
       stage('Compilando') {
             steps {
                  sh 'chmod 777 ./mvnw'
