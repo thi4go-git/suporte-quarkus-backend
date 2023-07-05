@@ -8,10 +8,10 @@ pipeline {
    }
 
    stages {
-      stage('teste'){
-              steps {
-                   sh 'ls'
-              }
+      stage('Testes NPM'){
+             steps {
+                 sh 'npm -v'
+             }
       }
       stage('Compilando') {
             steps {
@@ -63,7 +63,6 @@ pipeline {
        }
        unsuccessful {
             emailext attachLog: true, body: 'LOG:', subject: 'BUILD $BUILD_NUMBER suporte-quarkus Executado com Erro(s)!', to: 'thi4go19+jenkins@gmail.com'
-
        }
        fixed {
             emailext attachLog: true, body: 'LOG:', subject: 'BUILD $BUILD_NUMBER suporte-quarkus Executado com Sucesso!', to: 'thi4go19+jenkins@gmail.com'
