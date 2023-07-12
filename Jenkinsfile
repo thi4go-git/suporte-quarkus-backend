@@ -8,11 +8,6 @@ pipeline {
    }
 
    stages {
-      stage('Testes NPM'){
-             steps {
-                 sh 'npm -v'
-             }
-      }
       stage('Compilando') {
             steps {
                  sh 'chmod 777 ./mvnw'
