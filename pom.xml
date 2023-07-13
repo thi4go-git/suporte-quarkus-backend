@@ -136,8 +136,6 @@
             <classifier>runtime</classifier>
             <scope>test</scope>
         </dependency>
-
-        <!--Token JWT + keycloak -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-oidc</artifactId>

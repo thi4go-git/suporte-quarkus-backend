@@ -15,8 +15,7 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 
-import org.eclipse.microprofile.openapi.annotations.security.SecurityScheme;
-import org.eclipse.microprofile.openapi.annotations.security.SecuritySchemes;
+import org.eclipse.microprofile.openapi.annotations.security.*;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.inject.Inject;
@@ -33,14 +32,14 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Tag(name = "Pessoa Controller", description = "API de Pessoas")//Swagger
-@SecuritySchemes({ // Habilita envio de Bearer Token Swagger para endpoints
+@SecuritySchemes({ //Autenticar com Token no Swagger
         @SecurityScheme(
-                securitySchemeName = "bearerAuth",
-                type = SecuritySchemeType.HTTP,
-                scheme = "bearer",
-                bearerFormat = "JWT"
+                securitySchemeName = "pessoa-controller-oauth",
+                type = SecuritySchemeType.OAUTH2,
+                flows = @OAuthFlows(password = @OAuthFlow(tokenUrl = "http://cloudtecnologia.dynns.com:8180/realms/CLOUD_TECNOLOGIA/protocol/openid-connect/token"))
         )
 })
+@SecurityRequirement(name = "pessoa-controller-oauth")// configura o envio do token nas requisições
 public class PessoaController {
 
     @Inject
