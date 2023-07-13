@@ -48,7 +48,7 @@ class PessoaControllerTest {
 
     private static final String CPF_INEXISTENTE = "00626778400";
     private static final String CPF_EXISTENTE = "89626778490";
-    private static final Long ID_EXISTENTE = 2L;
+    private static final Long ID_EXISTENTE = 1L;
     private static final Long ID_INEXISTENTE = 999999L;
     private static final String NOME_UPDATE = "TESTE UPDATE";
     private static final String TAG_ERRORS = "errors";
@@ -124,14 +124,12 @@ class PessoaControllerTest {
     @Order(3)
     void listar() {
 
-        String token = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJJc25GYzJwXzZvR19pTHAtVlNmdUdJaXppX1ZNYnROOGNlc0s3bjI2Q2NNIn0.eyJleHAiOjE2ODkxMzcxMDYsImlhdCI6MTY4OTEzNTM2NiwianRpIjoiZmRjNmM2ZDYtZDU2NC00ZmYyLTk4ODYtNGIwN2E2YWI1NTgwIiwiaXNzIjoiaHR0cDovL2Nsb3VkdGVjbm9sb2dpYS5keW5ucy5jb206ODE4MC9yZWFsbXMvQ0xPVURfVEVDTk9MT0dJQSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIzODUyZTNhYS00ZjI1LTQwM2ItODdiYS02MmQ0MGEwOGNmZWEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJzdXBvcnRlLXF1YXJrdXMiLCJzZXNzaW9uX3N0YXRlIjoiNDc0YTEyMDMtYzBiMi00NTlmLTg0MTEtMDA0NDA1YTJlY2NjIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzLWNsb3VkX3RlY25vbG9naWEiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwidXNlciJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjQ3NGExMjAzLWMwYjItNDU5Zi04NDExLTAwNDQwNWEyZWNjYyIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6IlRoaWFnbyBNZWxvIiwicHJlZmVycmVkX3VzZXJuYW1lIjoidGhpYWdvLm1lbG8iLCJnaXZlbl9uYW1lIjoiVGhpYWdvIiwiZmFtaWx5X25hbWUiOiJNZWxvIiwiZW1haWwiOiJ0aGk0Z28xOUBnbWFpbC5jb20ifQ.skWZEWp1DxzLvGmDFIccr-wERydRF-aapyaM2pktcjJ4d4TEvA__yxx4-RLZxb0VejWOyfO1OCl7gNXPOZMS1ptlvMxbUcy7vQGXtoAtxdvq6cyZ2s_utqTGf_AlnZrwslk6LO8wFdtkPgMGUNsfaR9xo1pomTQNpCMwAXnqy_GU0A9WqnCQejbpboMHmZP4yb_98nDkCF60DegQxxrQIqsFclOnaBppoRAmoR0YRQkbMglR45D3Oj7VYS_2AIrdMXO34OIEqOldB3Az3NHlMgIvOYgK2Cd9f1I5spFRv8GmiUmjrnNAzRTS6Rl0EwT-ItNp3X3_bhvxFcbMkxV2vA";
-
         var resposta = given()
                 .contentType(MediaType.APPLICATION_JSON)
                 .when()
                 .get()
                 .then()
-                .body("size()", Matchers.is(2))
+                .body("size()", Matchers.is(1))
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();
@@ -142,13 +140,12 @@ class PessoaControllerTest {
     }
 
     @Test
-    void testListar(){
+    void testListar() {
         given()
                 .contentType(MediaType.APPLICATION_JSON)
                 .when()
                 .get()
-                .then()
-                ;
+                .then();
     }
 
     @Test
@@ -278,7 +275,7 @@ class PessoaControllerTest {
                 .when()
                 .get("/reflection")
                 .then()
-                .body("size()", Matchers.is(2))
+                .body("size()", Matchers.is(1))
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();
