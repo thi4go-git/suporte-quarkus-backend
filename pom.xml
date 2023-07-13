@@ -20,13 +20,13 @@
         <jacoco.version>0.8.7</jacoco.version>
         <sonar.coverage.exclusions>
             **/model/**, **/dto/**, **/entity/**,
-            **/enum/**, **/enums/**,
+            **/enum/**, **/enums/**,**/repository/**,
             **/anottation/**, **/enums/**,
             **/repository/**
         </sonar.coverage.exclusions>
         <sonar.exclusions>
             **/model/**, **/dto/**, **/entity/**,
-            **/enum/**, **/enums/**,
+            **/enum/**, **/enums/**,**/repository/**,
             **/anottation/**, **/enums/**,
             **/repository/**
         </sonar.exclusions>

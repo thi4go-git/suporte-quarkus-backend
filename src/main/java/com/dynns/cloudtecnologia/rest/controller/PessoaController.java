@@ -5,6 +5,7 @@ import com.dynns.cloudtecnologia.rest.dto.*;
 import com.dynns.cloudtecnologia.rest.mapper.PessoaMapper;
 import com.dynns.cloudtecnologia.service.impl.MensagemSwaggerService;
 import com.dynns.cloudtecnologia.service.impl.PessoaServiceImpl;
+import io.quarkus.security.Authenticated;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -14,7 +15,6 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -28,8 +28,7 @@ import java.util.List;
 @Path("/api/pessoas")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-@Tag(name = "Pessoa Controller", description = "API de Pessoas")
-@RolesAllowed({"user"})
+@Tag(name = "Pessoa Controller", description = "API de Pessoas")//Swagger
 public class PessoaController {
 
     @Inject
