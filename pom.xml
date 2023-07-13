@@ -20,15 +20,13 @@
         <jacoco.version>0.8.7</jacoco.version>
         <sonar.coverage.exclusions>
             **/model/**, **/dto/**, **/entity/**,
-            **/enum/**, **/enums/**,**/repository/**,
-            **/anottation/**, **/enums/**,
-            **/repository/**
+            **/enum/**, **/enums/**,
+            **/anottation/**, **/enums/**
         </sonar.coverage.exclusions>
         <sonar.exclusions>
             **/model/**, **/dto/**, **/entity/**,
-            **/enum/**, **/enums/**,**/repository/**,
-            **/anottation/**, **/enums/**,
-            **/repository/**
+            **/enum/**, **/enums/**,
+            **/anottation/**, **/enums/**
         </sonar.exclusions>
     </properties>
 
@@ -103,6 +101,10 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-resteasy</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-client</artifactId>
         </dependency>
         <dependency>
@@ -134,11 +136,12 @@
             <classifier>runtime</classifier>
             <scope>test</scope>
         </dependency>
+
+        <!--Token JWT + keycloak -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-oidc</artifactId>
         </dependency>
-
 
     </dependencies>
 
