@@ -1,6 +1,5 @@
 -- This file allow to write SQL commands that will be emitted in test and dev.
--- The commands are commented as their support depends of the database
--- insert into myentity (id, field) values(1, 'field-1');
--- insert into myentity (id, field) values(2, 'field-2');
--- insert into myentity (id, field) values(3, 'field-3');
--- alter sequence myentity_seq restart with 4;
+
+
+INSERT INTO pessoa (id, cep, cpf, data_cadastro, email, nacionalidade, nome, telefone, titulo_eleitoral, ativo)
+VALUES (1, '74913339', '50745666060' , current_date, 'user3@gmail.com', 1, 'Silas Neves Judas','55982542289',true );

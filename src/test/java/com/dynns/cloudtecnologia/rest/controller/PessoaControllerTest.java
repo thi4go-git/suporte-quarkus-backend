@@ -129,7 +129,9 @@ class PessoaControllerTest {
                 .when()
                 .get()
                 .then()
-                .body("size()", Matchers.is(1))
+                .body("size()", Matchers.is(1),
+                        "cpf", Matchers.hasItems("89626778490"),
+                        "nome", Matchers.hasItems("Daiane Tereza Oliveira"))
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();
@@ -275,7 +277,8 @@ class PessoaControllerTest {
                 .when()
                 .get("/reflection")
                 .then()
-                .body("size()", Matchers.is(1))
+                .body("size()", Matchers.is(1),
+                        "cpf", Matchers.hasItems("89626778490"))
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();

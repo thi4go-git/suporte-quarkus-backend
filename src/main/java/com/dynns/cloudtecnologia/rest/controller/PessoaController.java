@@ -28,7 +28,7 @@ import java.util.List;
 
 
 @Path("/api/pessoas")
-@Produces(MediaType.APPLICATION_JSON)
+@Produces({MediaType.APPLICATION_JSON})
 @Consumes(MediaType.APPLICATION_JSON)
 @Tag(name = "Pessoa Controller", description = "API de Pessoas")//Swagger
 @SecuritySchemes({ //Autenticar com Token no Swagger
@@ -49,7 +49,7 @@ public class PessoaController {
 
 
     @POST
-    @RequestBody(required = true)
+    @RequestBody(required = true)//Swagger
     @Operation(summary = "Cria uma Pessoa")
     @APIResponses(value = {@APIResponse(responseCode = MensagemSwaggerService.STATUS_CREATED, description = MensagemSwaggerService.MSG_SUCESSO, content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = PessoaDTONew.class))),})
     public Response salvar(@RequestBody(description = MensagemSwaggerService.MSG_DTO_CREATE, required = true, content = @Content(schema = @Schema(implementation = PessoaDTONew.class))) @Valid final PessoaDTONew pessoaDTONew) {
