@@ -5,7 +5,6 @@ import com.dynns.cloudtecnologia.rest.dto.*;
 import com.dynns.cloudtecnologia.rest.mapper.PessoaMapper;
 import com.dynns.cloudtecnologia.service.impl.MensagemSwaggerService;
 import com.dynns.cloudtecnologia.service.impl.PessoaServiceImpl;
-import io.quarkus.security.Authenticated;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SecuritySchemeType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
