@@ -31,7 +31,7 @@ pipeline {
                    -Dsonar.login=85d3a813a3df2250d726cbe7a28d5902e0dc6b66 \
                    -Dsonar.java.binaries=target \
                    -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/entity/**,**/dto/**,**/enums/**,**/repository/**,MavenWrapperDownloader.java,**/META-INF/**,EnderecoDTO.java,PessoaDTONew.java,PessoaDTOUpdate.java,PessoaDTOView.java,PessoaReflectionDTO.java" \
-                   -Dsonar.exclusions=**/dto/**
+                   -Dsonar.exclusions=EnderecoDTO.java
                }
            }
       }
