@@ -25,7 +25,13 @@ pipeline {
            }
            steps {
                withSonarQubeEnv('SONAR'){
-                   sh "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=suporte-quarkus-backend -Dsonar.host.url=http://cloudtecnologia.dynns.com:9000 -Dsonar.login=85d3a813a3df2250d726cbe7a28d5902e0dc6b66 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/entity/**,**/dto/**,**/enums/**,**/repository/**,MavenWrapperDownloader.java,**/META-INF/**,EnderecoDTO.java,PessoaDTONew.java,PessoaDTOUpdate.java,PessoaDTOView.java,PessoaReflectionDTO.java"
+                   sh "${scannerHome}/bin/sonar-scanner -e \
+                   -Dsonar.projectKey=suporte-quarkus-backend \
+                   -Dsonar.host.url=http://cloudtecnologia.dynns.com:9000 \
+                   -Dsonar.login=85d3a813a3df2250d726cbe7a28d5902e0dc6b66 \
+                   -Dsonar.java.binaries=target \
+                   -Dsonar.coverage.exclusions=**/.mvn/**,**/src/test/**,**/entity/**,**/dto/**,**/enums/**,**/repository/**,MavenWrapperDownloader.java,**/META-INF/**,EnderecoDTO.java,PessoaDTONew.java,PessoaDTOUpdate.java,PessoaDTOView.java,PessoaReflectionDTO.java" \
+                   -Dsonar.exclusions=**/dto/**
                }
            }
       }

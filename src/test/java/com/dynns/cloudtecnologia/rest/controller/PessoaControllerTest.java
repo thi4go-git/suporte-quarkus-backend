@@ -278,7 +278,7 @@ class PessoaControllerTest {
                 .get("/reflection")
                 .then()
                 .body("size()", Matchers.is(1),
-                        "cpf", Matchers.hasItems("89626778490"))
+                        "cpf", Matchers.hasItems(CPF_EXISTENTE))
                 .extract().response();
 
         String responseBody = resposta.getBody().asString();
