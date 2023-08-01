@@ -10,6 +10,7 @@ import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
+import org.hibernate.validator.constraints.br.CPF;
 import org.junit.jupiter.api.*;
 
 import javax.inject.Inject;
@@ -130,7 +131,7 @@ class PessoaControllerTest {
                 .get()
                 .then()
                 .body("size()", Matchers.is(1),
-                        "cpf", Matchers.hasItems("89626778490"),
+                        "cpf", Matchers.hasItems(CPF_EXISTENTE),
                         "nome", Matchers.hasItems("Daiane Tereza Oliveira"))
                 .extract().response();
 

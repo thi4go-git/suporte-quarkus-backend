@@ -19,12 +19,12 @@
         <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
         <jacoco.version>0.8.7</jacoco.version>
         <sonar.coverage.exclusions>
-            **/model/**, **/dto/**, **/entity/**,
+            **/model/**,**/rest/dto/**, **/entity/**,
             **/enum/**, **/enums/**,
             **/anottation/**, **/enums/**
         </sonar.coverage.exclusions>
         <sonar.exclusions>
-            **/model/**, **/dto/**, **/entity/**,
+            **/model/**,**/rest/dto/**, **/entity/**,
             **/enum/**, **/enums/**,
             **/anottation/**, **/enums/**
         </sonar.exclusions>
