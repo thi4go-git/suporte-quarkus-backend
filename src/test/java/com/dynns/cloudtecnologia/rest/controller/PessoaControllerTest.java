@@ -10,15 +10,11 @@ import io.quarkus.test.common.http.TestHTTPEndpoint;
 import io.quarkus.test.junit.QuarkusTest;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
-import org.hibernate.validator.constraints.br.CPF;
 import org.junit.jupiter.api.*;
-
 import javax.inject.Inject;
 import javax.ws.rs.core.MediaType;
-
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,0 +1,21 @@
+version: "3"
+services:
+  jenkins:
+    container_name: JENKINS
+    image: jenkins/jenkins:lts
+    ports:
+      - "8000:8080"
+      - "50000:50000"
+    environment:
+      - JAVA_OPTS=-Dhudson.footerURL=http://mycompany.com
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DOCKER_GID=999
+    user: root
+    restart: always
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - docker_sock:/var/run/docker.sock
+
+volumes:
+  jenkins_home:
+  docker_sock:
