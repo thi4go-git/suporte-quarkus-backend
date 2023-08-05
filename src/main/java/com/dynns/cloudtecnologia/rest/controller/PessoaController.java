@@ -113,4 +113,14 @@ public class PessoaController {
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 
+    @POST
+    @Path("/kafka")
+    @RequestBody(required = true)//Swagger
+    @Operation(summary = "Envia pessoa para KAFKA")
+    @APIResponses(value = {@APIResponse(responseCode = MensagemSwaggerService.STATUS_OK, description = MensagemSwaggerService.MSG_SUCESSO, content = @Content(mediaType = MediaType.APPLICATION_JSON, schema = @Schema(implementation = PessoaDTONew.class))),})
+    public Response enviarPessoaKAfka(@RequestBody(description = MensagemSwaggerService.MSG_DTO_CREATE, required = true, content = @Content(schema = @Schema(implementation = PessoaDTONew.class))) final PessoaDTONew pessoaDTONew) {
+        pessoaService.enviarPessoaKafka(pessoaDTONew);
+        return Response.status(Response.Status.OK.getStatusCode()).build();
+    }
+
 }

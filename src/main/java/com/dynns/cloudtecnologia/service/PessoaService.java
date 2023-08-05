@@ -29,4 +29,6 @@ public interface PessoaService {
 
     List<PessoaReflectionDTO> getPessoasReflection();
 
+    void enviarPessoaKafka(PessoaDTONew pessoaDTONew);
+
 }

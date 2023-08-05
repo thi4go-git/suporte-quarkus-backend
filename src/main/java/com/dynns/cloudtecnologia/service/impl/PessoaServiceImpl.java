@@ -1,6 +1,7 @@
 package com.dynns.cloudtecnologia.service.impl;
 
 
+import com.dynns.cloudtecnologia.infra.message.kafka.PublisherKafka;
 import com.dynns.cloudtecnologia.model.entity.Pessoa;
 import com.dynns.cloudtecnologia.model.repository.PessoaRepository;
 import com.dynns.cloudtecnologia.rest.client.ViaCepClient;
@@ -32,6 +33,8 @@ public class PessoaServiceImpl implements PessoaService {
     @RestClient
     private ViaCepClient viaCepClient;
 
+    @Inject
+    private PublisherKafka publisherKafka;
 
     @Override
     @Transactional
@@ -97,6 +100,11 @@ public class PessoaServiceImpl implements PessoaService {
     @Override
     public List<PessoaReflectionDTO> getPessoasReflection() {
         return pessoaRepository.getPessoasReflection();
+    }
+
+    @Override
+    public void enviarPessoaKafka(PessoaDTONew pessoaDTONew) {
+        publisherKafka.enviarPessoaKafka(pessoaDTONew);
     }
 
 }
