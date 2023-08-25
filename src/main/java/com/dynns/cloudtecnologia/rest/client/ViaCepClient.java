@@ -3,8 +3,8 @@ package com.dynns.cloudtecnologia.rest.client;
 import com.dynns.cloudtecnologia.rest.dto.EnderecoDTO;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 
 @RegisterRestClient

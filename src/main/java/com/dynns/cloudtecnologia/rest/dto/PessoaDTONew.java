@@ -8,7 +8,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 import org.hibernate.validator.constraints.br.TituloEleitoral;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 
 
 @Data

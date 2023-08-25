@@ -7,7 +7,7 @@ import com.dynns.cloudtecnologia.rest.dto.*;
 import org.modelmapper.ModelMapper;
 
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;

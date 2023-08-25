@@ -3,7 +3,7 @@ package mock;
 import com.dynns.cloudtecnologia.rest.client.ViaCepClient;
 import com.dynns.cloudtecnologia.rest.dto.EnderecoDTO;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import io.quarkus.test.Mock;
 import org.eclipse.microprofile.rest.client.inject.RestClient;

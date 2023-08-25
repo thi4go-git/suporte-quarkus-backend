@@ -2,10 +2,10 @@ package com.dynns.cloudtecnologia.anottation.impl;
 
 import com.dynns.cloudtecnologia.anottation.CEPValido;
 import com.dynns.cloudtecnologia.service.impl.PessoaServiceImpl;
+import jakarta.inject.Inject;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
-import javax.inject.Inject;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 
 public class CEPValidoImpl implements ConstraintValidator<CEPValido, String> {
 

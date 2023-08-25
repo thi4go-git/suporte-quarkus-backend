@@ -5,7 +5,7 @@ import com.dynns.cloudtecnologia.model.enums.NacionalidadeEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @NoArgsConstructor

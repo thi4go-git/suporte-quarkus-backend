@@ -13,9 +13,9 @@ import com.dynns.cloudtecnologia.rest.mapper.PessoaMapper;
 import com.dynns.cloudtecnologia.service.PessoaService;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import java.util.List;
 
 

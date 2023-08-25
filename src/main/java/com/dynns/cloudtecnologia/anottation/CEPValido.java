@@ -1,9 +1,10 @@
 package com.dynns.cloudtecnologia.anottation;
 
 import com.dynns.cloudtecnologia.anottation.impl.CEPValidoImpl;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+
 import java.lang.annotation.*;
 
 
