@@ -5,9 +5,7 @@ import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
 
 @ApplicationScoped
@@ -16,13 +14,12 @@ public class PublisherKafka {
 
     private static final Logger LOG = LoggerFactory.getLogger(PublisherKafka.class);
 
-    @Inject
     @Channel("pessoas")
     Emitter<PessoaDTONew> pessoaDTONewEmitter;
 
 
     public void enviarPessoaKafka(PessoaDTONew pessoaDTONew) {
-        pessoaDTONewEmitter.send(pessoaDTONew);
+        pessoaDTONewEmitter.send(pessoaDTONew).toCompletableFuture().join();
         LOG.info("Enviado para o KAFKA: " + pessoaDTONew.toString());
     }
 }
