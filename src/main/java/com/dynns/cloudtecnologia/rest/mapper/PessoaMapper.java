@@ -1,13 +1,11 @@
 package com.dynns.cloudtecnologia.rest.mapper;
 
+import com.dynns.cloudtecnologia.config.ModelMapperConfig;
 import com.dynns.cloudtecnologia.model.entity.Pessoa;
 import com.dynns.cloudtecnologia.rest.dto.*;
-
-
 import org.modelmapper.ModelMapper;
-
-
 import jakarta.enterprise.context.ApplicationScoped;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,15 +20,11 @@ public class PessoaMapper {
      * @return
      */
     public Pessoa pessoaDTONewToPessoa(final PessoaDTONew dtoNew) {
-
-        ModelMapper modelMapper = new ModelMapper();
-        Pessoa newPessoa = modelMapper.map(dtoNew, Pessoa.class);
-
+        Pessoa newPessoa = ModelMapperConfig.getModelMapper().map(dtoNew, Pessoa.class);
         newPessoa.setDataCadastro(LocalDate.now());
         newPessoa.setAtivo(true);
 
         return newPessoa;
-
     }
 
     /**
@@ -40,8 +34,7 @@ public class PessoaMapper {
      * @return
      */
     public PessoaDTOView pessoaToPessoaDTOView(final Pessoa pessoa) {
-        ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(pessoa, PessoaDTOView.class);
+        return ModelMapperConfig.getModelMapper().map(pessoa, PessoaDTOView.class);
     }
 
 
@@ -71,8 +64,7 @@ public class PessoaMapper {
         return pessoaEnderecoDTO;
     }
 
-    public PessoaDTOUpdate pessoaDTONewToPessoaDTOUpdate(PessoaDTONew pessoaDTONew){
-        ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(pessoaDTONew, PessoaDTOUpdate.class);
+    public PessoaDTOUpdate pessoaDTONewToPessoaDTOUpdate(PessoaDTONew pessoaDTONew) {
+        return ModelMapperConfig.getModelMapper().map(pessoaDTONew, PessoaDTOUpdate.class);
     }
 }
